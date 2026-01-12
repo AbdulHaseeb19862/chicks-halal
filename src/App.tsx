@@ -1,8 +1,10 @@
+import { Login } from "./pages/login/Login";
+
 function App() {
   return (
     <>
       <div>
-        <h2>Welcome to Dashboard</h2>
+        <Login />
       </div>
     </>
   );
