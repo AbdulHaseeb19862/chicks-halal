@@ -25,8 +25,8 @@ import {
 
 const items = [
   {
-    title: "Overview",
-    url: "/",
+    title: "Overviews",
+    url: "overviews",
     icon: LayoutDashboard,
   },
   {
@@ -36,42 +36,42 @@ const items = [
   },
   {
     title: "Categories",
-    url: "/categories",
+    url: "categories",
     icon: Tags,
   },
   {
     title: "Products",
-    url: "/products",
+    url: "products",
     icon: Package,
   },
   {
     title: "Orders",
-    url: "/orders",
+    url: "orders",
     icon: ShoppingCart,
   },
   {
     title: "Reviews",
-    url: "#",
+    url: "reviews",
     icon: Star,
   },
   {
     title: "Order Catering",
-    url: "/order-catering",
+    url: "order-catering",
     icon: ListOrdered,
   },
   {
     title: "Contacts",
-    url: "/list-oredered",
+    url: "contacts",
     icon: Contact,
   },
   {
     title: "Profile",
-    url: "/profile",
+    url: "profile",
     icon: User,
   },
   {
     title: "Settings",
-    url: "/settings",
+    url: "settings",
     icon: Settings,
   },
 ];
@@ -84,7 +84,7 @@ const AppSideBar = () => {
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="group ">
               <Link
-                to="/"
+                to="dashboard"
                 className="flex items-center gap-2 px-4 py-3 font-bold text-yellow-400 hover:text-yellow-300 "
               >
                 {/* SHORT NAME (only when collapsed) */}

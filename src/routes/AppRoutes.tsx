@@ -4,6 +4,15 @@ import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Customer from "../pages/dashboard/Customer";
+import Overviews from "../pages/dashboard/Overviews";
+import Categories from "../pages/dashboard/Categories";
+import Products from "../pages/dashboard/Products";
+import Orders from "../pages/dashboard/Orders";
+import Reviews from "../pages/dashboard/Reviews";
+import OrderCatering from "../pages/dashboard/OrderCatering";
+import Contacts from "../pages/dashboard/Contacts";
+import Profile from "../pages/dashboard/Profile";
+import Settings from "../pages/dashboard/Settings";
 
 const AppRoutes = () => {
   return (
@@ -15,14 +24,22 @@ const AppRoutes = () => {
       <Route
         path="/dashboard"
         element={
-          // <ProtectedRoute>
-          <DashboardLayout />
-          // </ProtectedRoute>
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
         }
       >
         <Route index element={<Dashboard />} />
         <Route path="customers" element={<Customer />} />
-        {/* <Route path="settings" element={<Settings />} /> */}
+        <Route path="overviews" element={<Overviews />} />
+        <Route path="categories" element={<Categories />} />
+        <Route path="products" element={<Products />} />
+        <Route path="orders" element={<Orders />} />
+        <Route path="reviews" element={<Reviews />} />
+        <Route path="order-catering" element={<OrderCatering />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
 
       {/* Redirect unknown routes */}

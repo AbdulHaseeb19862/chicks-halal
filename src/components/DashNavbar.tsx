@@ -1,4 +1,11 @@
-import { ChevronDown, Menu } from "lucide-react";
+import {
+  ChevronDown,
+  KeyIcon,
+  LucideLogOut,
+  Menu,
+  Settings,
+  User,
+} from "lucide-react";
 import { useSidebar } from "./ui/sidebar";
 import { Button } from "./ui/button";
 import {
@@ -59,13 +66,25 @@ const DashNavbar = () => {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-sm">
+              Super Admin
+            </DropdownMenuLabel>
             <p className="text-xs text-muted-foreground pl-2">ali@gmail.com</p>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Setting</DropdownMenuItem>
-            <DropdownMenuItem>Change Password</DropdownMenuItem>
-            <DropdownMenuItem>Logout</DropdownMenuItem>
+            <DropdownMenuItem className="text-muted-foreground font-semibold text-xs cursor-pointer ">
+              <User />
+              <span>Profile</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="text-muted-foreground font-semibold text-xs cursor-pointer">
+              <Settings /> <span>Setting</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="text-muted-foreground font-semibold text-xs cursor-pointer">
+              <KeyIcon /> <span>Change Password</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem className=" font-semibold text-xs cursor-pointer">
+              <LucideLogOut className="text-red-800 hover:text-red-600" />
+              <span className="text-red-800 hover:text-red-600"> Logout </span>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
