@@ -31,7 +31,7 @@ const items = [
   },
   {
     title: "Customers",
-    url: "/customers",
+    url: "customers",
     icon: Users,
   },
   {

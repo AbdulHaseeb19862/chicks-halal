@@ -1,13 +1,12 @@
-import Dashboard from "./pages/dashboard/Dashboard";
+// import Dashboard from "./pages/dashboard/Dashboard";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <>
-      <div className=" w-full">
-        {/* <Login /> */}
+      {/* <Login /> */}
 
-        <Dashboard />
-      </div>
+      <AppRoutes />
     </>
   );
 }
