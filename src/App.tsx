@@ -1,8 +1,12 @@
+import Dashboard from "./pages/dashboard/Dashboard";
+
 function App() {
   return (
     <>
-      <div>
-        <h2>Welcome to Dashboard</h2>
+      <div className=" w-full">
+        {/* <Login /> */}
+
+        <Dashboard />
       </div>
     </>
   );
