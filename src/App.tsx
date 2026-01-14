@@ -1,10 +1,12 @@
-import { Login } from "./pages/login/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
     <>
-      <div>
-        <Login />
+      <div className=" w-full">
+        {/* <Login /> */}
+
+        <Dashboard />
       </div>
     </>
   );
