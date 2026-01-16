@@ -17,10 +17,13 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { useState } from "react";
+import { useAuthStore } from "../api/auth/store";
 
 const DashNavbar = () => {
   const { toggleSidebar } = useSidebar();
   const [isOpen, setIsOpen] = useState(false);
+  const user = useAuthStore((state) => state.user);
+  console.log("User", user);
 
   return (
     <div className="w-full flex justify-between items-center gap-2 p-4">
@@ -42,9 +45,9 @@ const DashNavbar = () => {
           <DropdownMenuTrigger asChild>
             <div className="font-medium flex items-center justify-center gap-2.5 cursor-pointer">
               <span className="w-8 h-8 bg-amber-300 p-2 rounded-full flex justify-center items-center text-white font-semibold">
-                A
+                {user?.name?.at(0)}
               </span>
-              <div className="flex items-center items-center ">
+              <div className="flex items-center  ">
                 <div>
                   <p>Super Admin</p>
                   <p className="text-muted-foreground text-xs">
@@ -69,7 +72,7 @@ const DashNavbar = () => {
             <DropdownMenuLabel className="text-sm">
               Super Admin
             </DropdownMenuLabel>
-            <p className="text-xs text-muted-foreground pl-2">ali@gmail.com</p>
+            <p className="text-xs text-muted-foreground pl-2">{user?.email}</p>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="text-muted-foreground font-semibold text-xs cursor-pointer ">
               <User />

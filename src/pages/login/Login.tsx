@@ -2,7 +2,8 @@ import { ShoppingBag } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Button } from "../../components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { loginSchema, LoginFormType } from "../../schema/login.schema";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Card,
@@ -14,8 +15,13 @@ import {
 } from "../../components/ui/card";
 import InputFields from "../../components/reuseable/InputFields";
 import { loginSchema, type LoginFormType } from "./loginSchema";
+import { useAsyncLogin } from "../../api/auth/queries";
+import { useNavigate } from "react-router";
 
 export function Login() {
+  const navigate = useNavigate();
+  const { mutate, isPending, error } = useAsyncLogin();
+
   const {
     control,
     handleSubmit,
@@ -27,9 +33,32 @@ export function Login() {
       password: "",
     },
   });
+  localStorage.clear();
 
   const onSubmit = (data: LoginFormType) => {
-    console.log("Login Data:", data);
+    mutate(data, {
+      onSuccess: () => {
+        toast.success("Login successful! Welcome To Dashboard", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
+      },
+
+      onError: (error: any) => {
+        toast.error(
+          error?.message
+            ? "Invalid credentials please try again"
+            : " " || "Login failed. Please try again.",
+          {
+            position: "top-right",
+            autoClose: 4000,
+          }
+        );
+      },
+    });
   };
 
   return (
@@ -68,25 +97,27 @@ export function Login() {
 
             <Button
               type="submit"
+              disabled={isPending}
               className="w-full h-10 bg-amber-300 hover:bg-amber-400/60 text-black cursor-pointer font-bold tex-lg"
             >
-              Sign in
+              {isPending ? "Signing in..." : "Sign in"}
             </Button>
           </form>
         </CardContent>
 
         <CardFooter className="flex-col gap-2">
-          {/* <Button variant="outline" className="w-full">
-            Login with Google
-          </Button> */}
           <p className="text-xs text-muted-foreground">
             Demo credentials: admin@store.com / password
           </p>
         </CardFooter>
       </Card>
+
       <p className="text-sm text-muted-foreground mt-5">
         @2024 Shop Admin Panel, All rights reserved
       </p>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 }

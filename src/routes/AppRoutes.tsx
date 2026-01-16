@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "../pages/login/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import PublicRoute from "./PublicRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Customer from "../pages/dashboard/Customer";
@@ -17,8 +18,14 @@ import Settings from "../pages/dashboard/Settings";
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Login */}
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
 
       {/* Dashboard (Protected) */}
       <Route
